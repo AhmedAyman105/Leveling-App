@@ -804,6 +804,7 @@ root.iconbitmap(r"images\logo.ico")
 root_bg = "#F5F5F5"
 root.configure(bg=root_bg)
 root.resizable(False,False)
+root.geometry("620x430+440+150")
 
 
 ########################  Padding Frame  ########################
