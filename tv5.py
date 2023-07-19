@@ -1,3 +1,4 @@
+# Imports
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 import openpyxl.styles
@@ -11,7 +12,6 @@ import os
 import webbrowser
 import logging
 import shutil
-
 
 # Configuring Logger
 
@@ -37,7 +37,6 @@ entry_width = 55
 
 
 # Fucntion to get the input file path , validate and Show it for the User 
-# Enhancement => Try Label Frame ( GUI )
 
 def get_input_file():
     st.set("Status : Listening to Input Path")
@@ -52,6 +51,8 @@ def get_input_file():
         st.set("Status : Ready")
     else :
         st.set("Status : Input Path is Empty !")
+
+
 # Fucntion to get the output file path , validate and Show it for the User 
 
 def get_ouput_file():
@@ -65,8 +66,6 @@ def get_ouput_file():
         st.set("Status : Ready")
     else :
         st.set("Status : Output Path is Empty !")
-
-
 
 
 # Validate All Entieries From The User
@@ -118,7 +117,7 @@ def check_user_input() :
         raise ValueError("Execution of the Code Stopped => Loop") 
 
 
-
+# Read The File
 def handle_excel_file() :
     try :
         st.set('Status : Reading Excell File .... ')
@@ -137,6 +136,8 @@ def handle_excel_file() :
         logging.error(f"Error With 'handle_excel_file()' => {e}")
         raise ValueError("Execution of the Code Stopped => Loop")
 
+
+# Check if the format is valid => one reading
 def check_excell_file() :
     try :
         st.set('Status : Checking Excell File .... ')
@@ -152,6 +153,8 @@ def check_excell_file() :
             logging.error(f"Error With 'handle_excel_file()' => {e}")
             raise ValueError("Execution of the Code Stopped => Loop")
 
+
+# Check if the format is valid => three reading
 def check_excell_file3() :
     try :
         if type(ws['A1'].value) == str or type(ws['A2'].value) == str or type(ws['A3'].value) == str or bool(ws['A1'].value) == False or bool(ws['A2'].value) == False or bool(ws['A3'].value) == False  :
@@ -166,6 +169,7 @@ def check_excell_file3() :
             raise ValueError("Execution of the Code Stopped => Loop")
 
 
+# Replace All None Values With 0 if any 
 def check_none_values() :
     st.set('Status : Checking None Values ..... ')
     try :
@@ -179,7 +183,8 @@ def check_none_values() :
         st.set('Status : Error => None Value Checking Failed')
         logging.error(f"Error With 'handle_excel_file3()' => {e}")
 
-# chack readings 
+
+# Check All Rows and validate the condition of the readings
 def check_readings() :
     st.set('Status : Start Check Readings .....')
     global BS ; global IS ; global FS
@@ -237,6 +242,8 @@ def check_readings() :
         logging.error(f"Error Occured With 'check_readings()' => {e} ")
         raise ValueError("Execution of the Code Stopped => Loop")
 
+
+# Calculate Reduced Level
 def rl_calculations():
     st.set('Status : Start R.L Calculations ....')
     global rounded_reduced_level2
@@ -261,6 +268,7 @@ def rl_calculations():
             raise ValueError("Execution of the Code Stopped => Loop")
 
 
+# Insert Data Into Excell Sheet
 def insert_data() :
     st.set('Status : Inserting Data To Execll Sheet .....')
     try :
@@ -275,13 +283,14 @@ def insert_data() :
         for i in range(2, rows_num + 2):
             for j in range(1, cols_num + 3):
                 ws.cell(row=i, column=j, value=array1[i - 2, j - 1])
-        logging.info("Data Inserted into Exell Sheet Succefully")
+        logging.info("Data Inserted into Excel Sheet Succefully")
     except Exception as e :
         st.set("Status : Error => Can't Insert Data")
         logging.error(f"Error Occured With 'insert_data()' => {e} ")
         raise ValueError("Execution of the Code Stopped => Loop")
 
 
+# Set the Formatting for the excel sheet
 def foramtting() :
     st.set('Status : Start Formatting .....')
     try :
@@ -331,6 +340,7 @@ def foramtting() :
 #################################################################
 #########################    3 Reading  #########################
 #################################################################
+
 
 def read_BIF3():
     try :
@@ -517,9 +527,7 @@ def calculate_distance() :
         messagebox.showerror("Error with 'calculate_distance()'",f"{e}")
         logging.error(f"Error Occured With 'calculate_distance()' => {e} ")
         raise ValueError("Execution of the Code Stopped => Loop")
-
-
-
+    
 
 # Insert Data 
 
@@ -547,8 +555,6 @@ def insert_data3() :
         messagebox.showerror("Error with 'insert_data3()'",f"{e}")
         logging.error(f"Error Occured With 'insert_data3()' => {e} ")
         raise ValueError("Execution of the Code Stopped => Loop")
-
-
 
 
 def get_report_data3():
@@ -602,6 +608,7 @@ def get_report_data3():
         messagebox.showerror("Error","Error With 'get_report_data3()'")
         logging.error(f"Error With 'get_report_data3() => {e}")
         raise ValueError("Execution of the Code Stopped => Loop")
+
 
 def get_report_data():
     global data3
@@ -783,6 +790,7 @@ def open_w():
 
 def open_g():
     webbrowser.open_new_tab(g)
+
 
 #################################################################
 #########################     GUI      ##########################
