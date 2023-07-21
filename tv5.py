@@ -34,9 +34,7 @@ entry_width = 55
 ########################  Functionality  ########################
 #################################################################
 
-
-
-# Fucntion to get the input file path , validate and Show it for the User 
+# Function to get the input file path , validate and Show it for the User 
 
 def get_input_file():
     st.set("Status : Listening to Input Path")
@@ -53,7 +51,7 @@ def get_input_file():
         st.set("Status : Input Path is Empty !")
 
 
-# Fucntion to get the output file path , validate and Show it for the User 
+# Function to get the output file path , validate and Show it for the User 
 
 def get_ouput_file():
     # [01]
