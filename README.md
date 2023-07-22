@@ -9,7 +9,7 @@ This application is designed to solve leveling problems (BS-IS-FS) for both case
 
 - Solves for either one or three readings.
 - User-friendly interface.
-- Check all rows and warn you if the input data us not logic.
+- Check all rows and warn you if the input data is not logic.
 - Accurate and reliable results.
 - Generate report after calculation.
 - Log file to track errors or mistakes.
